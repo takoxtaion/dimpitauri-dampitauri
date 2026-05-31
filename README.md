@@ -1,19 +1,12 @@
+# homelab
 
-# dimpitauri-dampitauri
+k3s cluster running on Ubuntu 24.04.
 
-Personal k3s homelab cluster running on Ubuntu 24.04.
+## What's running
+- ArgoCD for GitOps deployments
+- Frontend site auto-deployed from this repo
 
-## Stack
-
-- k3s v1.35
-
-- ArgoCD (GitOps)
-
-- Frontend site deployed via Git
-
-## Structure
-
-apps/
-
-  frontend/     # my frontend site, deployed via ArgoCD
-
+## What I learned
+- Deployed apps with kubectl
+- Watched Kubernetes self-heal a deleted pod
+- GitOps: pushed a change to GitHub, ArgoCD synced it automatically
