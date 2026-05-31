@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      initContainers:
+      - name: git-clone
+        image: alpine/git
+        command:
+        - git
+        - clone
+        - https://github.com/takoxtaion/Frontend.git
+        - /html
+        volumeMounts:
+        - name: html
+          mountPath: /html
+      volumes:
+      - name: html
+        emptyDir: {}
